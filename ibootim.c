@@ -310,6 +310,7 @@ int ibootim_load_at_index(const char *path, ibootim **handle, unsigned int targe
 	
 	//write handle and return the image gracefully
 	*handle = image;
+	fclose(inputFile);
 	return 0;
 };
 
@@ -598,6 +599,7 @@ int ibootim_load_png(const char *path, ibootim **handle) {
 	png_destroy_read_struct(&read_struct, &info_struct, NULL);
 	
 	*handle = image;
+	fclose(f);
 	return 0;
 	
 	/*if (path && handle) {
